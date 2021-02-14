@@ -5,7 +5,13 @@ import Link from "next/link";
 
 function Home({ conversations }) {
   let itemList = conversations.map((conversation, index) => {
-    return <ListGroup.Item key={index}>{conversation.title}</ListGroup.Item>;
+    return (
+      <ListGroup.Item key={index}>
+        <Link href={`/conversations/${conversation.id}`}>
+          {conversation.title}
+        </Link>
+      </ListGroup.Item>
+    );
   });
 
   return (
