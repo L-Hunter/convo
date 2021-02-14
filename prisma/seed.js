@@ -23,6 +23,20 @@ async function main() {
               ],
             },
           },
+          {
+            text: "Well the bigger question is a hotdog actually food?",
+            thoughts: {
+              create: [
+                {
+                  text: "Not according to the surgeon general. (See citation)'",
+                },
+                {
+                  text:
+                    "I literally grew up on exclusively hotdogs, so of course it is.",
+                },
+              ],
+            },
+          },
         ],
       },
     },

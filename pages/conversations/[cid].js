@@ -1,13 +1,9 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Link from "next/link";
-
-import { ListGroup } from "react-bootstrap";
+import Messages from "@/components/messages";
 
 function ConversationDetail(conversation) {
-  let itemList = conversation.messages.map((message, index) => {
-    return <ListGroup.Item key={index}>{message.text}</ListGroup.Item>;
-  });
   return (
     <div>
       <Head>
@@ -17,7 +13,7 @@ function ConversationDetail(conversation) {
 
       <main>
         <h1>{conversation.title}</h1>
-        <ListGroup>{itemList}</ListGroup>
+        <Messages messages={conversation.messages} />
         <Link href="/">Home</Link>
       </main>
     </div>
@@ -25,8 +21,9 @@ function ConversationDetail(conversation) {
 }
 
 ConversationDetail.getInitialProps = async (ctx) => {
-  console.log(ctx);
-  const res = await fetch(`http://localhost:3000/api/v1/conversations/1`);
+  const res = await fetch(
+    `http://localhost:3000/api/v1/conversation/${ctx.query.cid}`
+  );
   const json = await res.json();
   return json;
 };

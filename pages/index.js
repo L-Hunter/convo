@@ -5,6 +5,8 @@ import Link from "next/link";
 
 function Home({ conversations }) {
   let itemList = conversations.map((conversation, index) => {
+    console.log(conversation);
+
     return (
       <ListGroup.Item key={index}>
         <Link href={`/conversations/${conversation.id}`}>

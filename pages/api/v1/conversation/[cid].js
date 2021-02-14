@@ -12,7 +12,11 @@ export default async (req, res) => {
       id: parseInt(cid),
     },
     include: {
-      messages: true,
+      messages: {
+        include: {
+          thoughts: true,
+        },
+      },
     },
   });
   res.json(conversation);
