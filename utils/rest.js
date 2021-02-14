@@ -1,6 +1,5 @@
 export async function post(url, data = {}) {
   // Default options are marked with *
-  console.log(data);
   const response = await fetch(url, {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     mode: "cors", // no-cors, *cors, same-origin
@@ -30,7 +29,6 @@ export async function get(url) {
     redirect: "follow", // manual, *follow, error
     referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
   });
-
   return response; // parses JSON response into native JavaScript objects
 }
 
