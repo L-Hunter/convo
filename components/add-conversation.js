@@ -2,7 +2,7 @@ import { Form, Button } from "react-bootstrap";
 import { post } from "@/utils/rest";
 import { useState } from "react";
 
-export default function AddConversation({ setInitialConvosToDefault }) {
+export default function AddConversation({ setNewConvo }) {
   const [title, setTitle] = useState("");
   const handleChange = (e) => {
     setTitle(e.target.value);
@@ -12,7 +12,8 @@ export default function AddConversation({ setInitialConvosToDefault }) {
     const res = await post("http://localhost:3000/api/v1/conversations", {
       title: title,
     });
-    await setInitialConvosToDefault();
+
+    setNewConvo(true);
     return res;
   }
 
@@ -26,10 +27,10 @@ export default function AddConversation({ setInitialConvosToDefault }) {
           placeholder="Enter a title for your Convo"
         />
         <Form.Text className="text-muted"></Form.Text>
+        <Button variant="primary" onClick={sendRequest}>
+          Add
+        </Button>
       </Form.Group>
-      <Button variant="primary" onClick={sendRequest}>
-        Primary
-      </Button>
     </Form>
   );
 }

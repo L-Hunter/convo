@@ -10,7 +10,9 @@ export default function Layout({ children }) {
       </Head>
       <Container fluid>
         <Row>
-          <Col>Convos</Col>
+          <Col>
+            <h1>Convos</h1>
+          </Col>
         </Row>
         <Row>
           <Col>{children}</Col>

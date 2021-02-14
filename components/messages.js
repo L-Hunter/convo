@@ -1,7 +1,7 @@
 import { ListGroup, Accordion, Card, Button } from "react-bootstrap";
 import AddThought from "@/components/add-thought";
 
-function Messages({ messages }) {
+function Messages({ setHasNewContent, messages }) {
   return (
     <Accordion defaultActiveKey="0">
       {messages.map((message, index) => {
@@ -27,7 +27,10 @@ function Messages({ messages }) {
                     );
                   })}
                 </ListGroup>
-                <AddThought mid={message.id} />
+                <AddThought
+                  setHasNewContent={setHasNewContent}
+                  mid={message.id}
+                />
               </Card.Body>
             </Accordion.Collapse>
           </Card>

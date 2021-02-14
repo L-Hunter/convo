@@ -2,7 +2,7 @@ import { Form, Button } from "react-bootstrap";
 import { post } from "@/utils/rest";
 import { useState } from "react";
 
-export default function AddThought({ mid }) {
+export default function AddThought({ setHasNewContent, mid }) {
   const [text, setText] = useState("");
   const handleChange = (e) => {
     setText(e.target.value);
@@ -13,6 +13,7 @@ export default function AddThought({ mid }) {
       text: text,
       messageId: mid,
     });
+    setHasNewContent(true);
     return res;
   }
 
@@ -25,10 +26,10 @@ export default function AddThought({ mid }) {
           placeholder="Enter your thought"
         />
         <Form.Text className="text-muted"></Form.Text>
+        <Button variant="primary" onClick={sendRequest}>
+          Add
+        </Button>
       </Form.Group>
-      <Button variant="primary" onClick={sendRequest}>
-        Submit
-      </Button>
     </Form>
   );
 }

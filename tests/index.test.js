@@ -1,11 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import App from "@/pages/index";
+import Home from "../pages/index";
 
-describe("App", () => {
+describe("Home", () => {
   it("renders without crashing", () => {
-    render(<App />);
-    expect(
-      screen.getByRole("heading", { name: "Welcome to Next.js!" })
-    ).toBeInTheDocument();
+    render(<Home convos={[]} />);
+    expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
   });
 });

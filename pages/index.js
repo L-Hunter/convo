@@ -1,4 +1,3 @@
-import styles from "../styles/Home.module.css";
 import { ListGroup } from "react-bootstrap";
 import Link from "next/link";
 import Layout from "@/components/layout";
@@ -9,21 +8,25 @@ import { useState, useEffect } from "react";
 async function getInitialConvos() {
   const res = await fetch("http://localhost:3000/api/v1/conversations");
   const json = await res.json();
-  return { initialConvos: json.data };
+  return { convos: json.data };
 }
 
-function Home({ initialConvos }) {
-  const [conversations, setConversations] = useState(initialConvos);
+function Home({ convos }) {
+  const [conversations, setConversations] = useState(convos);
+  const [newConvo, setNewConvo] = useState(false);
+  let itemList = [];
+  let title = "";
 
-  // Update the document title using the browser API
-  let itemList = conversations.map((conversation, index) => {
-    let title = `${conversation.title} (${conversation.messages.length})`;
-    return (
-      <ListGroup.Item key={index}>
-        <Link href={`/conversations/${conversation.id}`}>{title}</Link>
-      </ListGroup.Item>
-    );
-  });
+  async function reloadConvos() {
+    const response = await getInitialConvos();
+    setConversations(response.convos);
+  }
+
+  useEffect(() => {
+    reloadConvos();
+    setNewConvo(false);
+  }, [newConvo]);
+
   return (
     <Layout>
       <div>
@@ -31,9 +34,18 @@ function Home({ initialConvos }) {
           conversations={conversations}
           setConversations={setConversations}
         />
-        <ListGroup>{itemList}</ListGroup>
+        <ListGroup>
+          {conversations.map((conversation, index) => {
+            title = `${conversation.title} (${conversation.messages.length})`;
+            return (
+              <ListGroup.Item key={index}>
+                <Link href={`/conversations/${conversation.id}`}>{title}</Link>
+              </ListGroup.Item>
+            );
+          })}
+        </ListGroup>
       </div>
-      <AddConversation />
+      <AddConversation setNewConvo={setNewConvo} />
     </Layout>
   );
 }

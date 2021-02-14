@@ -2,7 +2,7 @@ import { Form, Button } from "react-bootstrap";
 import { post } from "@/utils/rest";
 import { useState } from "react";
 
-export default function AddMessage({ cid }) {
+export default function AddMessage({ setHasNewContent, cid }) {
   const [text, setText] = useState("");
   const handleChange = (e) => {
     setText(e.target.value);
@@ -13,6 +13,7 @@ export default function AddMessage({ cid }) {
       text: text,
       conversationId: cid,
     });
+    setHasNewContent(true);
     return res;
   }
 
@@ -27,7 +28,7 @@ export default function AddMessage({ cid }) {
         <Form.Text className="text-muted"></Form.Text>
       </Form.Group>
       <Button variant="primary" onClick={sendRequest}>
-        Submit
+        Add
       </Button>
     </Form>
   );
