@@ -2,7 +2,6 @@ import { ListGroup, Accordion, Card, Button } from "react-bootstrap";
 import AddThought from "@/components/add-thought";
 
 function Messages({ messages }) {
-  console.log(messages);
   return (
     <Accordion defaultActiveKey="0">
       {messages.map((message, index) => {

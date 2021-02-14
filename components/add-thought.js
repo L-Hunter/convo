@@ -1,5 +1,5 @@
 import { Form, Button } from "react-bootstrap";
-import post from "../utils/rest";
+import { post } from "@/utils/rest";
 import { useState } from "react";
 
 export default function AddThought({ mid }) {

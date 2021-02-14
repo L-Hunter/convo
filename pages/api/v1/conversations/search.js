@@ -8,6 +8,9 @@ export default async (req, res) => {
         contains: req.query.title,
       },
     },
+    include: {
+      messages: true,
+    },
   });
 
   res.json({
