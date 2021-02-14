@@ -28,7 +28,7 @@ async function main() {
             thoughts: {
               create: [
                 {
-                  text: "Not according to the surgeon general. (See citation)'",
+                  text: "Not according to the surgeon general. (See citation)",
                 },
                 {
                   text:
