@@ -1,35 +1,26 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { ListGroup } from "react-bootstrap";
 import Link from "next/link";
+import Layout from "@/components/layout";
+import AddConversation from "@/components/add-conversation";
 
 function Home({ conversations }) {
   let itemList = conversations.map((conversation, index) => {
-    console.log(conversation);
-
+    let title = `${conversation.title} (${conversation.messages.length})`;
     return (
       <ListGroup.Item key={index}>
-        <Link href={`/conversations/${conversation.id}`}>
-          {conversation.title}
-        </Link>
+        <Link href={`/conversations/${conversation.id}`}>{title}</Link>
       </ListGroup.Item>
     );
   });
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Convos</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>Conversations.</h1>
-        <div>
-          <ListGroup>{itemList}</ListGroup>
-        </div>
-      </main>
-    </div>
+    <Layout>
+      <div>
+        <ListGroup>{itemList}</ListGroup>
+      </div>
+      <AddConversation />
+    </Layout>
   );
 }
 
