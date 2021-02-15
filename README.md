@@ -1,7 +1,7 @@
 Welcome!
 
 This app is built using NextJS, Prisma, NodeJS, and SQLite.
-It requires NodeJS version 14.13.1 or greater.
+It requires Node version 14.13.1 or greater.
 
 ## Installation
 
