@@ -5,14 +5,16 @@ It requires Node version 14.13.1 or greater.
 
 ## Installation
 
-Run: `npm install`
+```
+# Installs Node modules
+npm install
+# Create tables
+npx prisma migrate dev --preview-feature
+# Seed with some starter data
+npx prisma db seed --preview-feature
+```
 
 ## Optional Steps:
-
-If desired, you can first seed your database:
-`npx prisma db seed --preview-feature`
-
-This script can be run multiple times if you would like more data.
 
 To view Prisma Studio, run:
 `npx prisma studio`
