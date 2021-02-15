@@ -1,4 +1,4 @@
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { get } from "@/utils/rest";
 import { useState } from "react";
 
@@ -6,7 +6,6 @@ export default function ConversationSearch({
   conversations,
   setConversations,
 }) {
-  const [results, setResults] = useState(conversations);
   const [search, setSearch] = useState("");
 
   const handleChange = async (e) => {

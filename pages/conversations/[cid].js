@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-import Head from "next/head";
 import Link from "next/link";
 import Messages from "@/components/messages";
 import Layout from "@/components/layout";
